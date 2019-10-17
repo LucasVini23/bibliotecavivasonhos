@@ -27,4 +27,33 @@ public class Livro {
 	private String editora;
 	private String paginas;
 	
+	public Livro() {
+		
+	}
+	
+	public Livro(String descricao, String nomeLivro) {
+		this.descricao = descricao;
+		this.nomeLivro = nomeLivro;
+	}
+	
+	public Long getId() {
+		return id;
+	}
+	
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+	
+	public void setNomeLivro(String nomeLivro) {
+		this.nomeLivro = nomeLivro;
+	}
+	
+	public String getNomeLivro() {
+		return nomeLivro;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
 }
