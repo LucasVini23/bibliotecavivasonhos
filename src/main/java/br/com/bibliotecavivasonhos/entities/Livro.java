@@ -18,7 +18,7 @@ public class Livro {
 	private String nomeLivro;
 	private String descricao;
 	private String paginasDemo;
-	private String autor;
+	private Autor autor;
 	private String avaliacoes;
 	private String preco;
 	private String entrega;
