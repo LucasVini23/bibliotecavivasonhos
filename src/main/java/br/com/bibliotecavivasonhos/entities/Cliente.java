@@ -5,7 +5,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import lombok.Data;
+
 @Entity
+@Data
 public class Cliente {
 	
 	@Id
@@ -14,11 +17,11 @@ public class Cliente {
 	private String nome;
 	private String idade;
 	private String dataNascimento;
-	private Endereco endereco;
-	private Login login;
+	private String endereco;
+	private String login;
 	private String telefone;
 	private String telefone2;
-	private Livro produto;
+	private String produto;
 	private String cpf;
 
 }

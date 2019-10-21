@@ -1,0 +1,9 @@
+package br.com.bibliotecavivasonhos.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import br.com.bibliotecavivasonhos.entities.Autor;
+
+public interface AutorRepository extends JpaRepository<Autor, Long> {
+
+}

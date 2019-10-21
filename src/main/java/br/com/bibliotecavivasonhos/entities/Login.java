@@ -4,8 +4,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Email;
+
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
 public class Login {
 	
 	@Id
@@ -13,6 +19,13 @@ public class Login {
 	private Long id;
 	private String usuario;
 	private String senha;
+	@Email(message = "Email inválido")
 	private String email;
+	
+	public Login(String usuario, String senha, String email) {
+		this.usuario = usuario;
+		this.senha = senha;
+		this.email = email;
+	}
 
 }

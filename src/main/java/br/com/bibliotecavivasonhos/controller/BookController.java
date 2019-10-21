@@ -12,32 +12,32 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.bibliotecavivasonhos.entities.Livro;
-import br.com.bibliotecavivasonhos.repository.LivroRepository;
+import br.com.bibliotecavivasonhos.entities.Book;
+import br.com.bibliotecavivasonhos.repository.BookRepository;
 
 @RestController
-public class LivroController {
+public class BookController {
 	
 	@Autowired
-	private LivroRepository repository;
+	private BookRepository repository;
 	
 	@PostMapping("/add")
-	public ResponseEntity<Livro> add(@RequestBody Livro livro){
-		Livro livroCriado = repository.save(livro);
+	public ResponseEntity<Book> add(@RequestBody Book book){
+		Book livroCriado = repository.save(book);
 		return ResponseEntity.status(HttpStatus.CREATED).body(livroCriado);
 	}
 	
 	@GetMapping("/list")
-	public ResponseEntity<List<Livro>> listAll(){
-		List<Livro> livros = repository.findAll();
-		return ResponseEntity.ok(livros);
+	public ResponseEntity<List<Book>> listAll(){
+		List<Book> books = repository.findAll();
+		return ResponseEntity.ok(books);
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Livro> update(@PathVariable (name = "id") Long id, @RequestBody Livro livro){
-		livro.setId(id);
+	public ResponseEntity<Book> update(@PathVariable (name = "id") Long id, @RequestBody Book book){
+		book.setId(id);
 		
-		Livro livroModificado = repository.save(livro);
+		Book livroModificado = repository.save(book);
 		return ResponseEntity.ok(livroModificado);
 		
 	}
