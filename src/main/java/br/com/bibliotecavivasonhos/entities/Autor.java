@@ -26,6 +26,7 @@ public class Autor {
 	private String paisOrigem;
 	private String generos;
 	private String biografia;
+	
 	@ElementCollection
 	@CollectionTable(name = "tb_books")
 	private List<String> livros = new ArrayList<>();;

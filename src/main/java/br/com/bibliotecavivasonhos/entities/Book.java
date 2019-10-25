@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Data
+@NoArgsConstructor
 public class Book {
 	
 	@Id
@@ -18,11 +19,11 @@ public class Book {
 	private Long id;
 	private String nomeLivro;
 	private String descricao;
-	private String paginasDemo;
+//	private String paginasDemo;
 	private String autor;
 	private String avaliacoes;
 	private String preco;
-	private String entrega;
+//	private String entrega;
 	private String idioma;
 	private String categoria;
 	private String editora;

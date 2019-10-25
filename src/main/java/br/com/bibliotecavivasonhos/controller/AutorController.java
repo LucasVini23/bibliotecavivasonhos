@@ -35,23 +35,25 @@ public class AutorController {
 		return ResponseEntity.ok(listAuthors);
 	}
 	
-	
-	//TENTAR CONSERTAR ESSE METÓDO...
 	@PutMapping("/author/books/{id}")
-	public ResponseEntity<Autor> updateBooks(@PathVariable (name = "id") Long id) {
+	public ResponseEntity<Autor> updateBooks(@PathVariable (name = "id") Long id, @RequestBody Autor author) {
 		if(repository.findById(id).isPresent()) {
-			Autor author = repository.findById(id).get();
+			Autor authorUpdate = repository.findById(id).get();
 			
-			author.setLivros(Arrays.asList(author.getLivros() + "21 lições para o século 21"));
-			Autor updatedAuthor = repository.save(author);
-			System.out.println("--------------------------------------------------------- TESTE");
+			authorUpdate.setNome(author.getNome());
+			authorUpdate.setDataNascimento(author.getDataNascimento());
+			authorUpdate.setPaisOrigem(author.getPaisOrigem());
+			authorUpdate.setGeneros(author.getGeneros());
+			authorUpdate.setBiografia(author.getBiografia());
+			authorUpdate.setLivros(author.getLivros());
+			authorUpdate.setFotoAutor(author.getFotoAutor());
+						
+			Autor updatedAuthor = repository.save(authorUpdate);
 			return ResponseEntity.ok(updatedAuthor);
 		}
 		else {
-			System.out.println("--------------------------------------------------------- TESTE");
 			return null;
 		}
 	}
-	
 	
 }

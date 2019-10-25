@@ -7,11 +7,13 @@ import javax.persistence.Id;
 import javax.validation.constraints.Email;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
 public class Login {
 	
 	@Id

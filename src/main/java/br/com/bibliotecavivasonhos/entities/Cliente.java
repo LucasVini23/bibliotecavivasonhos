@@ -6,9 +6,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
+@NoArgsConstructor
 public class Cliente {
 	
 	@Id
@@ -23,5 +25,11 @@ public class Cliente {
 	private String telefone2;
 	private String produto;
 	private String cpf;
+	
+	public Cliente(String nome, String idade, String cpf) {
+		this.nome = nome;
+		this.idade = idade;
+		this.cpf = cpf;
+	}
 
 }

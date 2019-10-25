@@ -35,11 +35,25 @@ public class BookController {
 	
 	@PutMapping("/{id}")
 	public ResponseEntity<Book> update(@PathVariable (name = "id") Long id, @RequestBody Book book){
-		book.setId(id);
-		
-		Book livroModificado = repository.save(book);
-		return ResponseEntity.ok(livroModificado);
-		
+		if(repository.findById(id).isPresent()) {
+			Book bookUpdate = repository.findById(id).get();
+			
+			bookUpdate.setNomeLivro(book.getNomeLivro());
+			bookUpdate.setDescricao(book.getDescricao());
+			bookUpdate.setAutor(book.getAutor());
+			bookUpdate.setAvaliacoes(book.getAvaliacoes());
+			bookUpdate.setPreco(book.getPreco());
+			bookUpdate.setIdioma(book.getIdioma());
+			bookUpdate.setCategoria(book.getCategoria());
+			bookUpdate.setEditora(book.getEditora());
+			bookUpdate.setPaginas(book.getPaginas());
+			Book bookUpdated = repository.save(bookUpdate);
+			
+			return ResponseEntity.ok(bookUpdated);
+		}
+		else {
+			return null;
+		}
 	}
 	
 	@GetMapping("/{id}")

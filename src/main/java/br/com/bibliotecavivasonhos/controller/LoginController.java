@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.bibliotecavivasonhos.entities.Login;
@@ -34,11 +35,13 @@ public class LoginController {
 	}
 	
 	@PutMapping("/login/updatePassword/{id}")
-	public ResponseEntity<Login> updatePassword(@PathVariable (name = "id") Long id){
+	public ResponseEntity<Login> updatePassword(@PathVariable (name = "id") Long id, @RequestBody Login login){
 		if(repository.findById(id).isPresent()) {
 			Login updatePassword = repository.findById(id).get();
 			
-			updatePassword.setSenha("novapassword");
+			updatePassword.setUsuario(login.getUsuario());
+			updatePassword.setSenha(login.getSenha());
+			updatePassword.setEmail(login.getEmail());
 			Login updatedUser = repository.save(updatePassword);
 			return ResponseEntity.ok(updatedUser);
 		}
